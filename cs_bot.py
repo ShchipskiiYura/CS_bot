@@ -2,7 +2,8 @@ import telebot
 from telebot import types
 from face import feed
 from config import TOKEN
-import time, threading
+import time
+import threading
 
 bot = telebot.TeleBot(TOKEN)
 
