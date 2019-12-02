@@ -25,7 +25,7 @@ def feed():
     except:
         link = ''
 
-    #спроба отримати постx
+    #спроба отримати пости
     try:
         post2 = graph.get_object(id = id, fields = 'message')
         try:
