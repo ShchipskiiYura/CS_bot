@@ -4,7 +4,7 @@ import requests
 def feed():
     app_id = '551303715627319'
     app_secret = '253b1045c14151df9f5b679db9edfc96'
-    user_short_token = 'EAAH1aGYiITcBAHHpUrL5doeYuDpJCcomCgzrVthsZBEV8MtFprYf44XJMj3TCk7GpeLboU8KKFJVHFbfa1jQ7elXHSORq8NLipCMKLOFkaOkIGxfr0BNZAtWdHfrNZBe0yXGVmx5nbjx6ZC0dVNP7ljHLUbGaIkupDLdpSdcqgZDZD'
+    user_short_token = 'EAAH1aGYiITcBABMPIJcyU9gohmc8fXZAhOo0Q7TESiz9Bwtci2vlOC3RSRUYlizdp9hiXLExcKrl0wDCb4hOcO7yq2zhQyTpViyk7zyEZBOTBJHU2b93lECqSSbetSHBPnvMpQIhR3jgaPPo26tX2hMO6R3ceO0nItgg7ZAZAwZDZD'
     access_token_url = 'https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}'.format(app_id, app_secret, user_short_token)
     r = requests.get(access_token_url)
     access_token_info = r.json()
