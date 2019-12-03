@@ -70,7 +70,7 @@ def array():
 def repeat():
     # print(time.ctime())
     array()
-    threading.Timer(2700, repeat).start()
+    threading.Timer(3600, repeat).start()
 
 repeat()
 
