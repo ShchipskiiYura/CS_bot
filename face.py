@@ -42,7 +42,7 @@ def feed():
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]
+                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
         except:
             post = 'https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
 
