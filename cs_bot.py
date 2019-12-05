@@ -52,7 +52,7 @@ def array():
     try:
         new = feed()
     except facebook.GraphAPIError:
-        bot.send_message(message.chat.id, 'Хуйня! переделивай')
+        bot.send_message(message.chat.id, text = 'Хуйня! переделивай')
         threading.Timer(3600, array).start()
     
     post_f = new[0]
