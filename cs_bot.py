@@ -49,7 +49,12 @@ def send():
 
 
 def array():
-    new = feed()
+    try:
+        new = feed()
+    except facebook.GraphAPIError:
+        bot.send_message(message.chat.id, 'Хуйня! переделивай')
+        array()
+    
     post_f = new[0]
     picture = new[1]
 
