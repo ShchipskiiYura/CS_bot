@@ -50,7 +50,7 @@ def array():
         new = feed()
         post_f = new[0]
         picture = new[1]
-    except GraphAPIError:
+    except:
         ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
         bot.send_photo('@metrogoldenma', ph)
         threading.Timer(3600, repeat).start()
