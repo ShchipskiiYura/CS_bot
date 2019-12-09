@@ -52,17 +52,17 @@ def array():
         picture = new[1]
         
         for i in range(0, len(arr_picture)):
-        if picture != arr_picture[len(arr_picture) - 1]:
-            arr_picture.append(picture)
-            arr_picture.pop(0)
-            # print(arr_picture)
+            if picture != arr_picture[len(arr_picture) - 1]:
+                arr_picture.append(picture)
+                arr_picture.pop(0)
+                # print(arr_picture)
 
-    for i in range(0, len(arr_post)):
-        if post_f != arr_post[len(arr_post)-1]:
-            arr_post.append(post_f)
-            arr_post.pop(0)
-            send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
-            # print(arr_post)
+        for i in range(0, len(arr_post)):
+            if post_f != arr_post[len(arr_post)-1]:
+                arr_post.append(post_f)
+                arr_post.pop(0)
+                send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
+                # print(arr_post)
             
     except:
         threading.Timer(3600, repeat).start()
