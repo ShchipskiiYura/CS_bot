@@ -50,12 +50,8 @@ def array():
         new = feed()
         post_f = new[0]
         picture = new[1]
-    except:
-        ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
-        bot.send_photo('@metrogoldenma', ph)
-        threading.Timer(3600, repeat).start()
-
-    for i in range(0, len(arr_picture)):
+        
+        for i in range(0, len(arr_picture)):
         if picture != arr_picture[len(arr_picture) - 1]:
             arr_picture.append(picture)
             arr_picture.pop(0)
@@ -67,6 +63,11 @@ def array():
             arr_post.pop(0)
             send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
             # print(arr_post)
+            
+    except:
+        threading.Timer(3600, repeat).start()
+        ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
+        bot.send_photo('@metrogoldenma', ph)
 
 # таймер на півгодини, через кожні півгодини перевірка відбувається
 def repeat():
