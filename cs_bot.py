@@ -42,8 +42,9 @@ def send(photo, post):
 
 global arr_post
 global arr_picture
-arr_post = ['hello']
-arr_picture = [1]
+fc = feed()
+arr_post = [fc[0]]
+arr_picture = [fc[1]]
 
 def array():
     try:
@@ -93,39 +94,43 @@ def send_help(message):
 
 @bot.message_handler(commands=['get'])
 def send_array(message):
-    new = feed()
-    post1 = new[0]
-    picture1 = new[1]
-    if len(picture1) > 10:
-        n = 10
-    else:
-        n = len(picture1)
     try:
-        caption = post1
+        new = feed()
+        post1 = new[0]
+        picture1 = new[1]
+        if len(picture1) > 10:
+            n = 10
+        else:
+            n = len(picture1)
         try:
-            media = [types.InputMediaPhoto(picture1[0], caption = post1)]
-        except:
-            media = [types.InputMediaPhoto(picture1[0])]
+            caption = post1
+            try:
+                media = [types.InputMediaPhoto(picture1[0], caption = post1)]
+            except:
+                media = [types.InputMediaPhoto(picture1[0])]
 
-        for photo_id in range(1, n):
-            media.append(types.InputMediaPhoto(picture1[photo_id]))
-        bot.send_media_group(chat_id, media)
-    except:
-        try:
-            bot.send_photo(chat_id, picture1[0], caption = post1)
+            for photo_id in range(1, n):
+                media.append(types.InputMediaPhoto(picture1[photo_id]))
+            bot.send_media_group(chat_id, media)
         except:
             try:
-                med = []
-                for id in picture1:
-                    med.append(types.InputMediaPhoto(id))
-                bot.send_media_group(chat_id, med)
-                bot.send_message(chat_id, text = post1)
+                bot.send_photo(chat_id, picture1[0], caption = post1)
             except:
                 try:
-                    bot.send_photo(chat_id, picture1[0])
+                    med = []
+                    for id in picture1:
+                        med.append(types.InputMediaPhoto(id))
+                    bot.send_media_group(chat_id, med)
                     bot.send_message(chat_id, text = post1)
                 except:
-                    bot.send_photo(chat_id, picture1[0])
+                    try:
+                        bot.send_photo(chat_id, picture1[0])
+                        bot.send_message(chat_id, text = post1)
+                    except:
+                        bot.send_photo(chat_id, picture1[0])
+    except:
+        news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
+        bot.send_message(message.chat.id, text = news)
 
 if __name__ == "__main__":
     bot.polling(none_stop = True)
