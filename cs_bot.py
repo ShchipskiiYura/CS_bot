@@ -103,6 +103,7 @@ def send_help(message):
 def send_array(message):
     try:
         new = feed()
+        print(new)
         if len(new[0]) > 4096:
             post1 = new[0][0:4093] + '...'
         else:
