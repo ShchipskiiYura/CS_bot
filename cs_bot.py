@@ -42,9 +42,13 @@ def send(photo, post):
 
 global arr_post
 global arr_picture
-fc = feed()
-arr_post = [fc[0]]
-arr_picture = [fc[1]]
+try:
+    fc = feed()
+    arr_post = [fc[0]]
+    arr_picture = [fc[1]]
+else:
+    arr_post = [1]
+    arr_picture = [1]
 
 def array():
     try:
