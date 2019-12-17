@@ -97,7 +97,7 @@ def send_array(message):
     try:
         new = feed()
         if len(new[0]) > 4096:
-            post1 = new[0:4096]
+            post1 = new[0][0:4096]
         else:
             post1 = new[0]
         print(post1)
