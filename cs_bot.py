@@ -97,6 +97,7 @@ def send_array(message):
     try:
         new = feed()
         post1 = new[0]
+        print(post1)
         picture1 = new[1]
         if len(picture1) > 10:
             n = 10
