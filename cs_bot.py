@@ -49,7 +49,10 @@ arr_picture = [fc[1]]
 def array():
     try:
         new = feed()
-        post_f = new[0]
+        if len(new[0]) > 4096:
+            post_f = new[0][0:4093] + '...'
+        else:
+            post_f = new[0]
         picture = new[1]
         
         for i in range(0, len(arr_picture)):
@@ -97,7 +100,7 @@ def send_array(message):
     try:
         new = feed()
         if len(new[0]) > 4096:
-            post1 = new[0][0:4096]
+            post1 = new[0][0:4093] + '...'
         else:
             post1 = new[0]
         print(post1)
