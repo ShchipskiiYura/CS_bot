@@ -50,7 +50,7 @@ def array():
     try:
         new = feed()
         if len(new[0]) > 4096:
-            post_f = new[0][0:4093] + '...'
+            post_f = new[0][0:4093]
         else:
             post_f = new[0]
         picture = new[1]
@@ -62,8 +62,8 @@ def array():
                 # print(arr_picture)
 
         for i in range(0, len(arr_post)):
-            if post_f not is arr_post[len(arr_post)-1]:
-                arr_post.append(post_f)
+            if arr_post[len(arr_post)-1].index(post_f):
+                arr_post.append(post_f + '...')
                 arr_post.pop(0)
                 send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
                 # print(arr_post)
