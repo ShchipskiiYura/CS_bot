@@ -43,7 +43,7 @@ def send(photo, post):
 global arr_post
 global arr_picture
 fc = feed()
-arr_post = [fc[0][0:4093]]
+arr_post = [fc[0]]
 arr_picture = [fc[1]]
 
 def array():
@@ -62,7 +62,7 @@ def array():
                 # print(arr_picture)
 
         for i in range(0, len(arr_post)):
-            if post_f != arr_post[len(arr_post)-1]:
+            if post_f not is arr_post[len(arr_post)-1]:
                 arr_post.append(post_f)
                 arr_post.pop(0)
                 send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
