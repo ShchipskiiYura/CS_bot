@@ -49,7 +49,7 @@ def feed():
     arr_photo = []
     try:
         src = graph.get_object(id = id, fields = 'attachments')
-        if src['attachments']['data'][0]['media']['image']['width'] > 250 or src['attachments']['data'][0]['subattachments']['data'][i]['media']['image'] > 250:
+        if src['attachments']['data'][0]['media']['image']['width'] > 100 or src['attachments']['data'][0]['subattachments']['data'][i]['media']['image'] > 100:
             try:
                 for i in range(len(src['attachments']['data'])):
                     arr_photo.append(src['attachments']['data'][0]['media']['image']['src'])
