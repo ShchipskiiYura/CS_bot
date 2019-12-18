@@ -6,7 +6,7 @@ import time, threading
 
 bot = telebot.TeleBot(TOKEN)
 
-chat_id = '@cs_go_pro_2000'
+chat_id = '@CS_VNTU'
 
 def send(photo, post):
     if len(photo) > 10:
@@ -103,7 +103,7 @@ def send_help(message):
 def send_array(message):
     try:
         new = feed()
-        print(new)
+#         print(new)
         if len(new[0]) > 4096:
             post1 = new[0][0:4093] + '...'
         else:
