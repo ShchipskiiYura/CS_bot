@@ -64,6 +64,19 @@ def array():
             else:
                 post_f = new[0]
             picture = new[1]
+
+            for i in range(0, len(arr_picture)):
+                if picture != arr_picture[len(arr_picture) - 1]:
+                    arr_picture.append(picture)
+                    arr_picture.pop(0)
+                    # print(arr_picture)
+
+            for i in range(0, len(arr_post)):
+                if arr_post[len(arr_post)-1].index(post_f):
+                    arr_post.append(post_f + '...')
+                    arr_post.pop(0)
+                    send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
+                    # print(arr_post)
         except:
             new = feed_1()
             if len(new[0]) > 4096:
@@ -72,18 +85,18 @@ def array():
                 post_f = new[0]
             picture = new[1]
 
-        for i in range(0, len(arr_picture)):
-            if picture != arr_picture[len(arr_picture) - 1]:
-                arr_picture.append(picture)
-                arr_picture.pop(0)
-                # print(arr_picture)
+            for i in range(0, len(arr_picture)):
+                if picture != arr_picture[len(arr_picture) - 1]:
+                    arr_picture.append(picture)
+                    arr_picture.pop(0)
+                    # print(arr_picture)
 
-        for i in range(0, len(arr_post)):
-            if arr_post[len(arr_post)-1].index(post_f):
-                arr_post.append(post_f + '...')
-                arr_post.pop(0)
-                send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
-                # print(arr_post)
+            for i in range(0, len(arr_post)):
+                if arr_post[len(arr_post)-1].index(post_f):
+                    arr_post.append(post_f + '...')
+                    arr_post.pop(0)
+                    send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
+                    # print(arr_post)
 
     except:
         threading.Timer(3600, repeat).start()
