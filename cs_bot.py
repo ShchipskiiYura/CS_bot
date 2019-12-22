@@ -1,12 +1,12 @@
 import telebot
 from telebot import types
-from face import feed
+from face import feed, feed_1, mine
 from config import TOKEN
 import time, threading
 
 bot = telebot.TeleBot(TOKEN)
 
-chat_id = '@CS_VNTU'
+chat_id = '@cs_go_pro_2000'
 
 def send(photo, post):
     if len(photo) > 10:
@@ -47,18 +47,31 @@ try:
     arr_post = [fc[0]]
     arr_picture = [fc[1]]
 except:
-    arr_post = [1]
-    arr_picture = [1]
+    try:
+        fc = feed_1()
+        arr_post = [fc[0]]
+        arr_picture = [fc[1]]
+    except:
+        arr_post = [1]
+        arr_picture = [1]
 
 def array():
     try:
-        new = feed()
-        if len(new[0]) > 4096:
-            post_f = new[0][0:4093]
-        else:
-            post_f = new[0]
-        picture = new[1]
-        
+        try:
+            new = feed()
+            if len(new[0]) > 4096:
+                post_f = new[0][0:4093]
+            else:
+                post_f = new[0]
+            picture = new[1]
+        except:
+            new = feed_1()
+            if len(new[0]) > 4096:
+                post_f = new[0][0:4093]
+            else:
+                post_f = new[0]
+            picture = new[1]
+
         for i in range(0, len(arr_picture)):
             if picture != arr_picture[len(arr_picture) - 1]:
                 arr_picture.append(picture)
@@ -71,7 +84,7 @@ def array():
                 arr_post.pop(0)
                 send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
                 # print(arr_post)
-            
+
     except:
         threading.Timer(3600, repeat).start()
         ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
@@ -92,7 +105,9 @@ def keyboard():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard = False, resize_keyboard = True)
     btn1 = types.InlineKeyboardButton("/get")
     btn2 = types.InlineKeyboardButton("/help")
-    return markup.row(btn1,btn2)
+    btn3 = types.InlineKeyboardButton("/mine")
+    btn4 = types.InlineKeyboardButton("/cs")
+    return markup.row(btn1,btn2,btn3,btn4)
 
 @bot.message_handler(commands=['help'])
 def send_help(message):
@@ -102,13 +117,21 @@ def send_help(message):
 @bot.message_handler(commands=['get'])
 def send_array(message):
     try:
-        new = feed()
-#         print(new)
-        if len(new[0]) > 4096:
-            post1 = new[0][0:4093] + '...'
-        else:
-            post1 = new[0]
-        picture1 = new[1]
+        try:
+            new = feed()
+            if len(new[0]) > 4096:
+                post1 = new[0][0:4093] + '...'
+            else:
+                post1 = new[0]
+            picture1 = new[1]
+        except:
+            new = feed_1()
+            if len(new[0]) > 4096:
+                post1 = new[0][0:4093] + '...'
+            else:
+                post1 = new[0]
+            picture1 = new[1]
+
         if len(picture1) > 10:
             n = 10
         else:
@@ -126,6 +149,95 @@ def send_array(message):
         except:
             try:
                 bot.send_photo(chat_id, picture1[0], caption = post1)
+            except:
+                try:
+                    med = []
+                    for id in picture1:
+                        med.append(types.InputMediaPhoto(id))
+                    bot.send_media_group(chat_id, med)
+                    bot.send_message(chat_id, text = post1)
+                except:
+                    try:
+                        bot.send_photo(chat_id, picture1[0])
+                        bot.send_message(chat_id, text = post1)
+                    except:
+                        bot.send_photo(chat_id, picture1[0])
+    except:
+        news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
+        bot.send_message(message.chat.id, text = news)
+
+@bot.message_handler(commands=['mine'])
+def send_array(message):
+    try:
+        new = mine()
+        if len(new[0]) > 4096:
+            post1 = new[0][0:4093] + '...'
+        else:
+            post1 = new[0]
+        picture1 = new[1]
+        # chat_id = "@metrogoldenma"
+        if len(picture1) > 10:
+            n = 10
+        else:
+            n = len(picture1)
+        try:
+            caption = post1
+            try:
+                media = [types.InputMediaPhoto(picture1[0], caption = post1)]
+            except:
+                media = [types.InputMediaPhoto(picture1[0])]
+
+            for photo_id in range(1, n):
+                media.append(types.InputMediaPhoto(picture1[photo_id]))
+            bot.send_media_group(message.chat.id, media)
+        except:
+            try:
+                bot.send_photo(message.chat.id, picture1[0], caption = post1)
+            except:
+                try:
+                    med = []
+                    for id in picture1:
+                        med.append(types.InputMediaPhoto(id))
+                    bot.send_media_group(message.chat.id, med)
+                    bot.send_message(message.chat.id, text = post1)
+                except:
+                    try:
+                        bot.send_photo(message.chat.id, picture1[0])
+                        bot.send_message(message.chat.id, text = post1)
+                    except:
+                        bot.send_photo(message.chat.id, picture1[0])
+    except:
+        news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
+        bot.send_message(message.chat.id, text = news)
+
+
+@bot.message_handler(commands=['cs'])
+def send_array(message):
+    try:
+        new = mine()
+        if len(new[0]) > 4096:
+            post1 = new[0][0:4093] + '...'
+        else:
+            post1 = new[0]
+        picture1 = new[1]
+        chat_id = "@cs_go_pro_2000"
+        if len(picture1) > 10:
+            n = 10
+        else:
+            n = len(picture1)
+        try:
+            caption = post1
+            try:
+                media = [types.InputMediaPhoto(picture1[0], caption = post1)]
+            except:
+                media = [types.InputMediaPhoto(picture1[0])]
+
+            for photo_id in range(1, n):
+                media.append(types.InputMediaPhoto(picture1[photo_id]))
+            bot.send_media_group(chat_id, media)
+        except:
+            try:
+                bot.send_photo(message.chat.id, picture1[0], caption = post1)
             except:
                 try:
                     med = []
