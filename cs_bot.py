@@ -64,19 +64,6 @@ def array():
             else:
                 post_f = new[0]
             picture = new[1]
-
-            for i in range(0, len(arr_picture)):
-                if picture != arr_picture[len(arr_picture) - 1]:
-                    arr_picture.append(picture)
-                    arr_picture.pop(0)
-                    # print(arr_picture)
-
-            for i in range(0, len(arr_post)):
-                if arr_post[len(arr_post)-1].index(post_f):
-                    arr_post.append(post_f + '...')
-                    arr_post.pop(0)
-                    send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
-                    # print(arr_post)
         except:
             new = feed_1()
             if len(new[0]) > 4096:
@@ -84,20 +71,19 @@ def array():
             else:
                 post_f = new[0]
             picture = new[1]
-
-            for i in range(0, len(arr_picture)):
-                if picture != arr_picture[len(arr_picture) - 1]:
-                    arr_picture.append(picture)
-                    arr_picture.pop(0)
-                    # print(arr_picture)
-
-            for i in range(0, len(arr_post)):
-                if arr_post[len(arr_post)-1].index(post_f):
-                    arr_post.append(post_f + '...')
-                    arr_post.pop(0)
-                    send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
-                    # print(arr_post)
-
+            
+        for i in range(0, len(arr_picture)):
+            if picture != arr_picture[len(arr_picture) - 1]:
+                arr_picture.append(picture)
+                arr_picture.pop(0)
+                # print(arr_picture)
+    
+        for i in range(0, len(arr_post)):
+            if arr_post[len(arr_post)-1].index(post_f):
+                arr_post.append(post_f + '...')
+                arr_post.pop(0)
+                send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
+                # print(arr_post)
     except:
         threading.Timer(3600, repeat).start()
         ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
