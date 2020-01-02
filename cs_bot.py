@@ -57,27 +57,20 @@ except:
 
 def array():
     try:
-        try:
-            new = feed()
-            if len(new[0]) > 4096:
-                post_f = new[0][0:4093]
-            else:
-                post_f = new[0]
-            picture = new[1]
-        except:
-            new = feed_1()
-            if len(new[0]) > 4096:
-                post_f = new[0][0:4093]
-            else:
-                post_f = new[0]
-            picture = new[1]
-            
+        # try:
+        new = feed()
+        if len(new[0]) > 4096:
+            post_f = new[0][0:4093]
+        else:
+            post_f = new[0]
+        picture = new[1]
+
         for i in range(0, len(arr_picture)):
             if picture != arr_picture[len(arr_picture) - 1]:
                 arr_picture.append(picture)
                 arr_picture.pop(0)
                 # print(arr_picture)
-    
+
         for i in range(0, len(arr_post)):
             if arr_post[len(arr_post)-1].index(post_f):
                 arr_post.append(post_f + '...')
@@ -85,9 +78,31 @@ def array():
                 send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
                 # print(arr_post)
     except:
-        threading.Timer(3600, repeat).start()
-        ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
-        bot.send_photo('@metrogoldenma', ph)
+        try:
+            new = feed_1()
+            if len(new[0]) > 4096:
+                post_f = new[0][0:4093]
+            else:
+                post_f = new[0]
+            picture = new[1]
+
+            for i in range(0, len(arr_picture)):
+                if picture != arr_picture[len(arr_picture) - 1]:
+                    arr_picture.append(picture)
+                    arr_picture.pop(0)
+                    # print(arr_picture)
+
+            for i in range(0, len(arr_post)):
+                if arr_post[len(arr_post)-1].index(post_f):
+                    arr_post.append(post_f + '...')
+                    arr_post.pop(0)
+                    send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
+                    # print(arr_post)
+
+        except:
+            threading.Timer(3600, repeat).start()
+            ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
+            bot.send_photo('@metrogoldenma', ph)
 
 # таймер на півгодини, через кожні півгодини перевірка відбувається
 def repeat():
@@ -110,7 +125,7 @@ def keyboard():
 
 @bot.message_handler(commands=['help'])
 def send_help(message):
-    news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
+    news = "/get - отримати пост з групи кафедри власноруч\n/mine -отримати пост в цей же чат моєї групи\n/cs - з моєї групи в група кафедри в телеграм"
     bot.send_message(message.chat.id, text = news)
 
 @bot.message_handler(commands=['get'])
