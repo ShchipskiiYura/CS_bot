@@ -40,6 +40,13 @@ def send(photo, post):
                 except:
                     bot.send_photo(chat_id, photo[0])
 
+def auth(func):
+    def wrapper(message):
+        if message.from_user.id != 408288186:
+            return bot.send_message(message.chat.id, "Вибачте, у Вас немає доступу!")
+        return func(message)
+    return wrapper                 
+                    
 global arr_post
 global arr_picture
 try:
@@ -112,6 +119,7 @@ def repeat():
 repeat()
 
 @bot.message_handler(commands=['start'])
+@auth
 def start_message(message):
     bot.send_message(message.chat.id, "hello", reply_markup = keyboard())
 
@@ -124,11 +132,13 @@ def keyboard():
     return markup.row(btn1,btn2,btn3,btn4)
 
 @bot.message_handler(commands=['help'])
+@auth
 def send_help(message):
     news = "/get - отримати пост з групи кафедри власноруч\n/mine -отримати пост в цей же чат моєї групи\n/cs - з моєї групи в група кафедри в телеграм"
     bot.send_message(message.chat.id, text = news)
 
 @bot.message_handler(commands=['get'])
+@auth
 def send_array(message):
     try:
         try:
@@ -181,6 +191,7 @@ def send_array(message):
         bot.send_message(message.chat.id, text = news)
 
 @bot.message_handler(commands=['mine'])
+@auth
 def send_array(message):
     try:
         new = mine()
@@ -226,6 +237,7 @@ def send_array(message):
 
 
 @bot.message_handler(commands=['cs'])
+@auth
 def send_array(message):
     try:
         new = mine()
