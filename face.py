@@ -12,7 +12,7 @@ def feed():
     graph = facebook.GraphAPI(access_token = user_long_token, version = '3.0')
     pages_data = graph.get_object(id = "887065461390197", fields = 'feed')
     a = pages_data['feed']['data']
-    id = a[2]['id']
+    id = a[0]['id']
     post_id = id.split('_')
 
     # посилання, лінк інколи глючить
@@ -85,7 +85,7 @@ def feed_1():
     graph = facebook.GraphAPI(access_token = user_long_token, version = '3.0')
     pages_data = graph.get_object(id = "887065461390197", fields = 'feed')
     a = pages_data['feed']['data']
-    id = a[2]['id']
+    id = a[0]['id']
     post_id = id.split('_')
 
     # посилання, лінк інколи глючить
