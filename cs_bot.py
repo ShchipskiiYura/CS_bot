@@ -3,12 +3,11 @@ from telebot import types
 from face import feed, feed_1, mine
 from config import TOKEN
 import time, threading
+import datetime
 
 bot = telebot.TeleBot(TOKEN)
 
-chat_id = '@CS_VNTU'
-# @CS_VNTU
-# @cs_go_pro_2000
+chat_id = '@cs_go_pro_2000'
 
 def send(photo, post):
     if len(photo) > 10:
@@ -47,8 +46,9 @@ def auth(func):
         if message.from_user.id != 408288186:
             return bot.send_message(message.chat.id, "Вибачте, у Вас немає доступу!")
         return func(message)
-    return wrapper                 
-                    
+    return wrapper
+
+
 global arr_post
 global arr_picture
 try:
@@ -61,12 +61,11 @@ except:
         arr_post = [fc[0]]
         arr_picture = [fc[1]]
     except:
-        arr_post = [1]
-        arr_picture = [1]
+        arr_post = ['1']
+        arr_picture = ['1']
 
 def array():
     try:
-        # try:
         new = feed()
         if len(new[0]) > 4096:
             post_f = new[0][0:4093]
@@ -81,12 +80,19 @@ def array():
                 # print(arr_picture)
 
         for i in range(0, len(arr_post)):
-            if arr_post[len(arr_post)-1].index(post_f):
-                arr_post.append(post_f + '...')
+            if post_f != arr_post[len(arr_post)-1]:
+                arr_post.append(post_f)
+                if arr_post[len(arr_post)-1].index(post_f):
+                    arr_post.pop(0)
+                    arr_post.append(post_f + '...')
+                else:
+                    arr_post.pop(0)
+                    arr_post.append(post_f)
                 arr_post.pop(0)
                 send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
                 # print(arr_post)
     except:
+        # print('sorry')
         try:
             new = feed_1()
             if len(new[0]) > 4096:
@@ -102,22 +108,34 @@ def array():
                     # print(arr_picture)
 
             for i in range(0, len(arr_post)):
-                if arr_post[len(arr_post)-1].index(post_f):
-                    arr_post.append(post_f + '...')
+                if post_f != arr_post[len(arr_post)-1]:
+                    arr_post.append(post_f)
+                    if arr_post[len(arr_post)-1].index(post_f):
+                        arr_post.pop(0)
+                        arr_post.append(post_f + '...')
+                    else:
+                        arr_post.pop(0)
+                        arr_post.append(post_f)
                     arr_post.pop(0)
                     send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
                     # print(arr_post)
-
         except:
-            threading.Timer(3600, repeat).start()
+            threading.Timer(1800, repeat).start()
             ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
             bot.send_photo('@metrogoldenma', ph)
 
-# таймер на півгодини, через кожні півгодини перевірка відбувається
+# таймер
 def repeat():
     # print(time.ctime())
-    array()
-    threading.Timer(3600, repeat).start()
+    now = datetime.datetime.now()
+    time1 = datetime.time(15)
+    time2 = datetime.time(23)
+    if now.hour > time1.hour and now.hour < time2.hour:
+        array()
+        threading.Timer(900, repeat).start()
+    else:
+        array()
+        threading.Timer(5400, repeat).start()
 repeat()
 
 @bot.message_handler(commands=['start'])
@@ -237,7 +255,6 @@ def send_array(message):
         news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
         bot.send_message(message.chat.id, text = news)
 
-
 @bot.message_handler(commands=['cs'])
 @auth
 def send_array(message):
@@ -282,6 +299,7 @@ def send_array(message):
     except:
         news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
         bot.send_message(message.chat.id, text = news)
+
 
 if __name__ == "__main__":
     bot.polling(none_stop = True)
