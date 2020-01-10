@@ -120,6 +120,7 @@ def array():
                     send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
                     # print(arr_post)
         except:
+            print('three')
             threading.Timer(1800, repeat).start()
             ph = 'https://scontent.fiev25-1.fna.fbcdn.net/v/t1.0-9/79334841_523098078275839_3956316945845846016_o.jpg?_nc_cat=106&_nc_ohc=Q8WMxX8t-sgAQmww_NMd1R2gCvx3QaEJB7bSD_TNzW5bFGjJ4uoZZsULw&_nc_ht=scontent.fiev25-1.fna&oh=b361f45ff4f9b4177907be8c2f130fc3&oe=5E7DA7ED'
             bot.send_photo('@metrogoldenma', ph)
@@ -132,9 +133,11 @@ def repeat():
     time2 = datetime.time(23)
     if now.hour > time1.hour and now.hour < time2.hour:
         array()
+        print('one')
         threading.Timer(900, repeat).start()
     else:
         array()
+        print('two')
         threading.Timer(5400, repeat).start()
 repeat()
 
