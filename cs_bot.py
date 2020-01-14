@@ -7,8 +7,9 @@ import datetime
 
 bot = telebot.TeleBot(TOKEN)
 
-chat_id = '@cs_go_pro_2000'
-
+chat_id = '@CS_VNTU'
+#CS_VNTU
+# cs_go_pro_2000
 def send(photo, post):
     if len(photo) > 10:
         n = 10
@@ -268,7 +269,7 @@ def send_array(message):
         else:
             post1 = new[0]
         picture1 = new[1]
-        chat_id = "@cs_go_pro_2000"
+        chat_id = "@CS_VNTU"
         if len(picture1) > 10:
             n = 10
         else:
