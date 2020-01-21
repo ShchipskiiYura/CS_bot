@@ -132,7 +132,7 @@ def array():
 def repeat():
     # print(time.ctime())
     now = datetime.datetime.now()
-    time1 = datetime.time(15)
+    time1 = datetime.time(14)
     time2 = datetime.time(23)
     if now.hour > time1.hour and now.hour < time2.hour:
         array()
