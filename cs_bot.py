@@ -56,11 +56,13 @@ try:
     fc = feed()
     arr_post = [fc[0]]
     arr_picture = [fc[1]]
+    print(arr_post, arr_picture)
 except:
     try:
         fc = feed_1()
         arr_post = [fc[0]]
         arr_picture = [fc[1]]
+        print(arr_post, arr_picture)
     except:
         arr_post = ['1']
         arr_picture = ['1']
