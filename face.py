@@ -41,13 +41,13 @@ def feed():
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
         except:
             post = post2['message'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
     except:
@@ -55,7 +55,7 @@ def feed():
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
         except:
@@ -120,13 +120,13 @@ def feed_1():
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
         except:
             post = post2['message'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
     except:
@@ -134,7 +134,7 @@ def feed_1():
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
         except:
@@ -199,13 +199,13 @@ def mine():
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
         except:
             post = post2['message'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
     except:
@@ -213,7 +213,7 @@ def mine():
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find('ПРЕС')+1] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
         except:
