@@ -71,7 +71,7 @@ def array():
     try:
         new = feed()
         if len(new[0]) > 4096:
-            post_f = new[0][0:4093]
+            post_f = new[0][0:4092] + '...'
         else:
             post_f = new[0]
         picture = new[1]
@@ -87,7 +87,7 @@ def array():
                 arr_post.append(post_f)
                 if arr_post[len(arr_post)-1].index(post_f):
                     arr_post.pop(0)
-                    arr_post.append(post_f + '...')
+                    arr_post.append(post_f)
                 else:
                     arr_post.pop(0)
                     arr_post.append(post_f)
@@ -99,7 +99,7 @@ def array():
         try:
             new = feed_1()
             if len(new[0]) > 4096:
-                post_f = new[0][0:4093]
+                post_f = new[0][0:4092] + '...'
             else:
                 post_f = new[0]
             picture = new[1]
@@ -115,7 +115,7 @@ def array():
                     arr_post.append(post_f)
                     if arr_post[len(arr_post)-1].index(post_f):
                         arr_post.pop(0)
-                        arr_post.append(post_f + '...')
+                        arr_post.append(post_f)
                     else:
                         arr_post.pop(0)
                         arr_post.append(post_f)
