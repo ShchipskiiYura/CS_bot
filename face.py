@@ -42,7 +42,7 @@ def feed():
             post = post2['message'] + '\n' + post1['description'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -50,7 +50,7 @@ def feed():
             post = post2['message'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -60,7 +60,7 @@ def feed():
             post = post1['description'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -127,7 +127,7 @@ def feed_1():
             post = post2['message'] + '\n' + post1['description'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -135,7 +135,7 @@ def feed_1():
             post = post2['message'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -145,7 +145,7 @@ def feed_1():
             post = post1['description'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -212,7 +212,7 @@ def mine():
             post = post2['message'] + '\n' + post1['description'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -220,7 +220,7 @@ def mine():
             post = post2['message'] + url + link
             print(post)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
@@ -230,7 +230,7 @@ def mine():
             post = post1['description'] + url + link
             print(posy)
             if post.find('ПРЕС'):
-                post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             print(post)
