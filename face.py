@@ -40,24 +40,30 @@ def feed():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
         except:
             post = post2['message'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
         except:
             post = '\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
 
@@ -119,24 +125,30 @@ def feed_1():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
         except:
             post = post2['message'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
         except:
             post = '\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
 
@@ -198,24 +210,30 @@ def mine():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
         except:
             post = post2['message'] + url + link
+            print(post)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
+            print(posy)
             if post.find('ПРЕС'):
                 post = post[:post.find('ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
             else:
                 post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            print(post)
         except:
             post = '\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
 
