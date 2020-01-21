@@ -226,6 +226,7 @@ def send_array(message):
         else:
             post1 = new[0]
         picture1 = new[1]
+        print(new)
         print(post1, picture1)
         # chat_id = "@metrogoldenma"
         if len(picture1) > 10:
