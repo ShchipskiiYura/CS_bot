@@ -1,6 +1,14 @@
 import facebook
 import requests
 
+def check(post, uri):
+    if 'ПРЕС-ЦЕНТР ВНТУ' in post:
+        post = post[:post.index('ПРЕС-ЦЕНТР ВНТУ')]
+        post = '{0} {1}'.format(post, uri)
+    else:
+        post = '{0} {1}'.format(post, uri)
+    return post
+
 def feed():
     app_id = '551303715627319'
     app_secret = '253b1045c14151df9f5b679db9edfc96'
@@ -14,6 +22,7 @@ def feed():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
+    uri = '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
 
     # посилання, лінк інколи глючить
     try:
@@ -40,32 +49,17 @@ def feed():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
         except:
             post = post2['message'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
         except:
-            post = '\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            post = uri
 
     arr_photo = []
     try:
@@ -99,6 +93,7 @@ def feed_1():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
+    uri = '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
 
     # посилання, лінк інколи глючить
     try:
@@ -125,32 +120,17 @@ def feed_1():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
         except:
             post = post2['message'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
         except:
-            post = '\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            post = uri
 
     arr_photo = []
     try:
@@ -184,6 +164,7 @@ def mine():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
+    uri = '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
 
     # посилання, лінк інколи глючить
     try:
@@ -210,32 +191,17 @@ def mine():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
         except:
             post = post2['message'] + url + link
-            print(post)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')]+ '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
-            print(posy)
-            if post.find('ПРЕС'):
-                post = post[:post.find(' ПРЕС')] + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            else:
-                post = post + '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
-            print(post)
+            post = check(post, uri)
         except:
-            post = '\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+            post = uri
 
     arr_photo = []
     try:
@@ -254,4 +220,5 @@ def mine():
             # arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
     except:
             arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
+    print(post,arr_photo)
     return post, arr_photo
