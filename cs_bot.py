@@ -133,7 +133,7 @@ def repeat():
     time1 = datetime.time(14)
     time2 = datetime.time(23)
     print(now.hour,'-',time1.hour,'-',time2.hour)
-    if now.hour > time1.hour and now.hour < time2.hour:
+    if now.hour >= time1.hour and now.hour < time2.hour:
         array()
         print('one')
         threading.Timer(900, repeat).start()
