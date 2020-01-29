@@ -130,9 +130,9 @@ def array():
 def repeat():
     # print(time.ctime())
     now = datetime.datetime.now()
-    time1 = datetime.time(14)
+    time1 = datetime.time(15)
     time2 = datetime.time(23)
-    print(now.hour,'-',time1.hour,'-',time2.hour)
+#     print(now.hour,'-',time1.hour,'-',time2.hour)
     if now.hour >= time1.hour and now.hour < time2.hour:
         array()
         print('one')
