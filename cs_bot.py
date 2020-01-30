@@ -18,27 +18,27 @@ def send(photo, post):
     try:
         caption = post
         try:
-            media = [types.InputMediaPhoto(photo[0], caption = post)]
+            media = [types.InputMediaPhoto(photo[0], caption = post, parse_mode='markdown')]
         except:
             media = [types.InputMediaPhoto(photo[0])]
 
         for photo_id in range(1, n):
             media.append(types.InputMediaPhoto(photo[photo_id]))
-        bot.send_media_group(chat_id, media)
+        bot.send_media_group(chat_id, media, parse_mode='markdown')
     except:
         try:
-            bot.send_photo(chat_id, photo[0], caption = post)
+            bot.send_photo(chat_id, photo[0], caption = post, parse_mode='markdown')
         except:
             try:
                 med = []
                 for id in photo:
                     med.append(types.InputMediaPhoto(id))
                 bot.send_media_group(chat_id, med)
-                bot.send_message(chat_id, text = post)
+                bot.send_message(chat_id, text = post, parse_mode='markdown')
             except:
                 try:
                     bot.send_photo(chat_id, photo[0])
-                    bot.send_message(chat_id, text = post)
+                    bot.send_message(chat_id, text = post, parse_mode='markdown')
                 except:
                     bot.send_photo(chat_id, photo[0])
 
@@ -68,6 +68,7 @@ except:
 def array():
     try:
         new = feed()
+        print(new)
         if len(new[0]) > 4096:
             post_f = new[0][0:4092] + '...'
         else:
@@ -78,7 +79,6 @@ def array():
             if picture != arr_picture[len(arr_picture) - 1]:
                 arr_picture.append(picture)
                 arr_picture.pop(0)
-#                 print(arr_picture)
 
         for i in range(0, len(arr_post)):
             if post_f != arr_post[len(arr_post)-1]:
@@ -91,11 +91,11 @@ def array():
                     arr_post.append(post_f)
                 arr_post.pop(0)
                 send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
-#                 print(arr_post)
     except:
         # print('sorry')
         try:
             new = feed_1()
+            print(new)
             if len(new[0]) > 4096:
                 post_f = new[0][0:4092] + '...'
             else:
@@ -106,7 +106,6 @@ def array():
                 if picture != arr_picture[len(arr_picture) - 1]:
                     arr_picture.append(picture)
                     arr_picture.pop(0)
-#                     print(arr_picture)
 
             for i in range(0, len(arr_post)):
                 if post_f != arr_post[len(arr_post)-1]:
@@ -119,7 +118,6 @@ def array():
                         arr_post.append(post_f)
                     arr_post.pop(0)
                     send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
-#                     print(arr_post)
         except:
             print('three')
             threading.Timer(1800, repeat).start()
@@ -132,11 +130,13 @@ def repeat():
     now = datetime.datetime.now()
     time1 = datetime.time(15)
     time2 = datetime.time(23)
-#     print(now.hour,'-',time1.hour,'-',time2.hour)
     if now.hour >= time1.hour and now.hour < time2.hour:
         array()
         print('one')
         threading.Timer(900, repeat).start()
+    elif now.hour == time2.hour:
+        print('four')
+        threading.Timer(25300,repeat).start()
     else:
         array()
         print('two')
@@ -160,7 +160,7 @@ def keyboard():
 @auth
 def send_help(message):
     news = "/get - отримати пост з групи кафедри власноруч\n/mine -отримати пост в цей же чат моєї групи\n/cs - з моєї групи в група кафедри в телеграм"
-    bot.send_message(message.chat.id, text = news)
+    bot.send_message(message.chat.id, text = news, parse_mode='markdown')
 
 @bot.message_handler(commands=['get'])
 @auth
@@ -188,27 +188,27 @@ def send_array(message):
         try:
             caption = post1
             try:
-                media = [types.InputMediaPhoto(picture1[0], caption = post1)]
+                media = [types.InputMediaPhoto(picture1[0], caption = post1, parse_mode='markdown')]
             except:
                 media = [types.InputMediaPhoto(picture1[0])]
 
             for photo_id in range(1, n):
                 media.append(types.InputMediaPhoto(picture1[photo_id]))
-            bot.send_media_group(chat_id, media)
+            bot.send_media_group(chat_id, media, parse_mode='markdown')
         except:
             try:
-                bot.send_photo(chat_id, picture1[0], caption = post1)
+                bot.send_photo(chat_id, picture1[0], caption = post1, parse_mode='markdown')
             except:
                 try:
                     med = []
                     for id in picture1:
                         med.append(types.InputMediaPhoto(id))
                     bot.send_media_group(chat_id, med)
-                    bot.send_message(chat_id, text = post1)
+                    bot.send_message(chat_id, text = post1, parse_mode='markdown')
                 except:
                     try:
                         bot.send_photo(chat_id, picture1[0])
-                        bot.send_message(chat_id, text = post1)
+                        bot.send_message(chat_id, text = post1, parse_mode='markdown')
                     except:
                         bot.send_photo(chat_id, picture1[0])
     except:
@@ -225,8 +225,8 @@ def send_array(message):
         else:
             post1 = new[0]
         picture1 = new[1]
-        print(new)
-        print(post1, picture1)
+        # print(new)
+        # print(post1, picture1)
         # chat_id = "@metrogoldenma"
         if len(picture1) > 10:
             n = 10
@@ -235,29 +235,29 @@ def send_array(message):
         try:
             caption = post1
             try:
-                media = [types.InputMediaPhoto(picture1[0], caption = post1)]
+                media = [types.InputMediaPhoto(picture1[0], caption = post1, parse_mode='markdown')]
             except:
                 media = [types.InputMediaPhoto(picture1[0])]
 
             for photo_id in range(1, n):
                 media.append(types.InputMediaPhoto(picture1[photo_id]))
-            bot.send_media_group(message.chat.id, media)
+            bot.send_media_group(message.chat.id, media, parse_mode='markdown')
         except:
             try:
-                bot.send_photo(message.chat.id, picture1[0], caption = post1)
+                bot.send_photo(message.chat.id, picture1[0], caption = post1, parse_mode='markdown')
             except:
                 try:
                     med = []
                     for id in picture1:
                         med.append(types.InputMediaPhoto(id))
-                    bot.send_media_group(message.chat.id, med)
-                    bot.send_message(message.chat.id, text = post1)
+                    bot.send_media_group(message.chat.id, med, parse_mode='markdown')
+                    bot.send_message(message.chat.id, text = post1, parse_mode='markdown')
                 except:
                     try:
-                        bot.send_photo(message.chat.id, picture1[0])
-                        bot.send_message(message.chat.id, text = post1)
+                        bot.send_photo(message.chat.id, picture1[0], parse_mode='markdown')
+                        bot.send_message(message.chat.id, text = post1, parse_mode='markdown')
                     except:
-                        bot.send_photo(message.chat.id, picture1[0])
+                        bot.send_photo(message.chat.id, picture1[0], parse_mode='markdown')
     except:
         news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
         bot.send_message(message.chat.id, text = news)
@@ -272,7 +272,7 @@ def send_array(message):
         else:
             post1 = new[0]
         picture1 = new[1]
-        chat_id = "@CS_VNTU"
+        chat_id = "@cs_go_pro_2000"
         if len(picture1) > 10:
             n = 10
         else:
@@ -280,32 +280,32 @@ def send_array(message):
         try:
             caption = post1
             try:
-                media = [types.InputMediaPhoto(picture1[0], caption = post1)]
+                media = [types.InputMediaPhoto(picture1[0], caption = post1, parse_mode='markdown')]
             except:
                 media = [types.InputMediaPhoto(picture1[0])]
 
             for photo_id in range(1, n):
                 media.append(types.InputMediaPhoto(picture1[photo_id]))
-            bot.send_media_group(chat_id, media)
+            bot.send_media_group(chat_id, media, parse_mode='markdown')
         except:
             try:
-                bot.send_photo(message.chat.id, picture1[0], caption = post1)
+                bot.send_photo(message.chat.id, picture1[0], caption = post1, parse_mode='markdown')
             except:
                 try:
                     med = []
                     for id in picture1:
                         med.append(types.InputMediaPhoto(id))
                     bot.send_media_group(chat_id, med)
-                    bot.send_message(chat_id, text = post1)
+                    bot.send_message(chat_id, text = post1, parse_mode='markdown')
                 except:
                     try:
                         bot.send_photo(chat_id, picture1[0])
-                        bot.send_message(chat_id, text = post1)
+                        bot.send_message(chat_id, text = post1, parse_mode='markdown')
                     except:
                         bot.send_photo(chat_id, picture1[0])
     except:
         news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
-        bot.send_message(message.chat.id, text = news)
+        bot.send_message(message.chat.id, text = news, parse_mode='markdown')
 
 
 if __name__ == "__main__":
