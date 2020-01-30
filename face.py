@@ -22,7 +22,7 @@ def feed():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+    uri = '\n\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
 
     # посилання, лінк інколи глючить
     try:
@@ -31,13 +31,15 @@ def feed():
             link = "\nПосилання:\n" + link1['link']
         elif link1['link'].index('impuls'):
             link = ''
+        elif link1['link'].index('forms'):
+            link = ''
     except:
         link = ''
 
     try:
         url1 = graph.get_object(id = id, fields = 'attachments')
         if url1['attachments']['data'][0]['type'] == 'video_inline':
-            url = '\nВідео: \n' + url1['attachments']['data'][0]['url']
+            url = '\n[Відео](' + url1['attachments']['data'][0]['url'] + ')'
         else:
             url = ''
     except:
@@ -49,15 +51,27 @@ def feed():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
         except:
             post = post2['message'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
-            post = check(post, uri)
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
+            post = check(post, uri)            
         except:
             post = uri
 
@@ -83,7 +97,6 @@ def feed():
                 # arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
         except:
                 arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
-#     print(post,arr_photo)
     return post, arr_photo
 
 def feed_1():
@@ -99,7 +112,8 @@ def feed_1():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+    uri = '\n\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    
 
     # посилання, лінк інколи глючить
     try:
@@ -108,13 +122,17 @@ def feed_1():
             link = "\nПосилання:\n" + link1['link']
         elif link1['link'].index('impuls'):
             link = ''
+        elif link1['link'].index('forms'):
+            link = ''
+        else:
+            link = ''
     except:
         link = ''
 
     try:
         url1 = graph.get_object(id = id, fields = 'attachments')
         if url1['attachments']['data'][0]['type'] == 'video_inline':
-            url = '\nВідео: \n' + url1['attachments']['data'][0]['url']
+            url = '\n[Відео](' + url1['attachments']['data'][0]['url'] + ')'
         else:
             url = ''
     except:
@@ -126,14 +144,26 @@ def feed_1():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
         except:
             post = post2['message'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
         except:
             post = uri
@@ -160,7 +190,6 @@ def feed_1():
                 # arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
         except:
                 arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
-#     print(post,arr_photo)
     return post, arr_photo
 
 def mine():
@@ -176,7 +205,7 @@ def mine():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n\nПосилання на Facebook: https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1]
+    uri = '\n\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
 
     # посилання, лінк інколи глючить
     try:
@@ -185,13 +214,15 @@ def mine():
             link = "\nПосилання:\n" + link1['link']
         elif link1['link'].index('impuls'):
             link = ''
+        elif link1['link'].index('forms'):
+            link = ''
     except:
         link = ''
 
     try:
         url1 = graph.get_object(id = id, fields = 'attachments')
         if url1['attachments']['data'][0]['type'] == 'video_inline':
-            url = '\nВідео: \n' + url1['attachments']['data'][0]['url']
+            url = '\n[Відео](' + url1['attachments']['data'][0]['url'] + ')'
         else:
             url = ''
     except:
@@ -203,14 +234,26 @@ def mine():
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post2['message'] + '\n' + post1['description'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
         except:
             post = post2['message'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
     except:
         try:
             post1 = graph.get_object(id = id, fields = 'description')
             post = post1['description'] + url + link
+            try:
+                post = post.replace(post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35], '[Google Docs](' + post[post.index('https://forms.gle/'):post.index('https://forms.gle/') + 35] + ')')
+            except:
+                post = post
             post = check(post, uri)
         except:
             post = uri
@@ -237,5 +280,4 @@ def mine():
                 # arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
         except:
                 arr_photo.append('https://scontent.fiev25-2.fna.fbcdn.net/v/t1.0-9/78906943_519876088598038_7519946367553241088_n.jpg?_nc_cat=110&_nc_ohc=8IfubHYd1EsAQkVBzTWB2k3EiFZX0tyO_E8OPeXIFOLuF1Gaia4SxRXKA&_nc_ht=scontent.fiev25-2.fna&oh=1c4962f18b6c8ccf49785e7984eabf5b&oe=5E7723B2')
-#     print(post,arr_photo)
     return post, arr_photo
