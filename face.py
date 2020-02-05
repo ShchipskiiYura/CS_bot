@@ -22,20 +22,17 @@ def feed():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    uri = '\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
 
     # посилання, лінк інколи глючить
     try:
         link1 = graph.get_object(id = id, fields = 'link')
-        if link1['link'].index('google'):
-            link = "\nПосилання:\n" + link1['link']
-        elif link1['link'].index('impuls'):
-            link = ''
-        elif link1['link'].index('forms'):
-            link = ''
+        link = '\n\n[Посилання](' + link1['link'] + ')'
+#         elif link1['link'].index('impuls'):
+#             link = ''
     except:
         link = ''
-
+     
     try:
         url1 = graph.get_object(id = id, fields = 'attachments')
         if url1['attachments']['data'][0]['type'] == 'video_inline':
@@ -112,19 +109,14 @@ def feed_1():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    uri = '\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
     
 
     # посилання, лінк інколи глючить
     try:
         link1 = graph.get_object(id = id, fields = 'link')
-        if link1['link'].index('google'):
-            link = "\nПосилання:\n" + link1['link']
+        link = '\n\n[Посилання](' + link1['link'] + ')'
         elif link1['link'].index('impuls'):
-            link = ''
-        elif link1['link'].index('forms'):
-            link = ''
-        else:
             link = ''
     except:
         link = ''
@@ -205,16 +197,13 @@ def mine():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    uri = '\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
 
     # посилання, лінк інколи глючить
     try:
         link1 = graph.get_object(id = id, fields = 'link')
-        if link1['link'].index('google'):
-            link = "\nПосилання:\n" + link1['link']
+        link = '\n\n[Посилання](' + link1['link'] + ')'
         elif link1['link'].index('impuls'):
-            link = ''
-        elif link1['link'].index('forms'):
             link = ''
     except:
         link = ''
