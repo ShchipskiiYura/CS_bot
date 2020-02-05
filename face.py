@@ -116,8 +116,8 @@ def feed_1():
     try:
         link1 = graph.get_object(id = id, fields = 'link')
         link = '\n\n[Посилання](' + link1['link'] + ')'
-        elif link1['link'].index('impuls'):
-            link = ''
+#         elif link1['link'].index('impuls'):
+#             link = ''
     except:
         link = ''
 
@@ -203,8 +203,8 @@ def mine():
     try:
         link1 = graph.get_object(id = id, fields = 'link')
         link = '\n\n[Посилання](' + link1['link'] + ')'
-        elif link1['link'].index('impuls'):
-            link = ''
+#         elif link1['link'].index('impuls'):
+#             link = ''
     except:
         link = ''
 
