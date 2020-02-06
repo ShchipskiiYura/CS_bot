@@ -1,6 +1,6 @@
 import telebot
 from telebot import types
-from face import feed, feed_1, mine
+from face import feed, feed_1, mine, feed12
 from config import TOKEN
 import time, threading
 import datetime
@@ -9,7 +9,7 @@ bot = telebot.TeleBot(TOKEN)
 
 chat_id = '@CS_VNTU'
 #CS_VNTU
-# cs_go_pro_2000
+# chat_id = '@cs_go_pro_2000'
 def send(photo, post):
     if len(photo) > 10:
         n = 10
@@ -69,10 +69,7 @@ def array():
     try:
         new = feed()
         print(new)
-        if len(new[0]) > 4096:
-            post_f = new[0][0:4092] + '...'
-        else:
-            post_f = new[0]
+        post_f = new[0]
         picture = new[1]
 
         for i in range(0, len(arr_picture)):
@@ -96,10 +93,7 @@ def array():
         try:
             new = feed_1()
             print(new)
-            if len(new[0]) > 4096:
-                post_f = new[0][0:4092] + '...'
-            else:
-                post_f = new[0]
+            post_f = new[0]
             picture = new[1]
 
             for i in range(0, len(arr_picture)):
@@ -151,10 +145,11 @@ def start_message(message):
 def keyboard():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard = False, resize_keyboard = True)
     btn1 = types.InlineKeyboardButton("/get")
-    btn2 = types.InlineKeyboardButton("/help")
-    btn3 = types.InlineKeyboardButton("/mine")
-    btn4 = types.InlineKeyboardButton("/cs")
-    return markup.row(btn1,btn2,btn3,btn4)
+    btn2 = types.InlineKeyboardButton("/get-1")
+    btn3 = types.InlineKeyboardButton("/help")
+    btn4 = types.InlineKeyboardButton("/mine")
+    btn5 = types.InlineKeyboardButton("/cs")
+    return markup.row(btn1,btn2,btn3,btn4, btn5)
 
 @bot.message_handler(commands=['help'])
 @auth
@@ -168,17 +163,11 @@ def send_array(message):
     try:
         try:
             new = feed()
-            if len(new[0]) > 4096:
-                post1 = new[0][0:4093] + '...'
-            else:
-                post1 = new[0]
+            post1 = new[0]
             picture1 = new[1]
         except:
             new = feed_1()
-            if len(new[0]) > 4096:
-                post1 = new[0][0:4093] + '...'
-            else:
-                post1 = new[0]
+            post1 = new[0]
             picture1 = new[1]
 
         if len(picture1) > 10:
@@ -215,15 +204,55 @@ def send_array(message):
         news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
         bot.send_message(message.chat.id, text = news)
 
+@bot.message_handler(commands=['get-1'])
+@auth
+def send_array(message):
+    try:
+        new = feed12()
+        post1 = new[0]
+        picture1 = new[1]
+        
+        if len(picture1) > 10:
+            n = 10
+        else:
+            n = len(picture1)
+        try:
+            caption = post1
+            try:
+                media = [types.InputMediaPhoto(picture1[0], caption = post1, parse_mode='markdown')]
+            except:
+                media = [types.InputMediaPhoto(picture1[0])]
+
+            for photo_id in range(1, n):
+                media.append(types.InputMediaPhoto(picture1[photo_id]))
+            bot.send_media_group(chat_id, media, parse_mode='markdown')
+        except:
+            try:
+                bot.send_photo(chat_id, picture1[0], caption = post1, parse_mode='markdown')
+            except:
+                try:
+                    med = []
+                    for id in picture1:
+                        med.append(types.InputMediaPhoto(id))
+                    bot.send_media_group(chat_id, med)
+                    bot.send_message(chat_id, text = post1, parse_mode='markdown')
+                except:
+                    try:
+                        bot.send_photo(chat_id, picture1[0])
+                        bot.send_message(chat_id, text = post1, parse_mode='markdown')
+                    except:
+                        bot.send_photo(chat_id, picture1[0])
+    except:
+        news = "Прошу вибачення за неполадки.\nЧіп і Дейл уже спішать на допомогу.\nЮхххххххххххххххххххххуууууууууууууууууууу"
+        bot.send_message(message.chat.id, text = news)
+
+
 @bot.message_handler(commands=['mine'])
 @auth
 def send_array(message):
     try:
         new = mine()
-        if len(new[0]) > 4096:
-            post1 = new[0][0:4093] + '...'
-        else:
-            post1 = new[0]
+        post1 = new[0]
         picture1 = new[1]
         # print(new)
         # print(post1, picture1)
@@ -267,12 +296,9 @@ def send_array(message):
 def send_array(message):
     try:
         new = mine()
-        if len(new[0]) > 4096:
-            post1 = new[0][0:4093] + '...'
-        else:
-            post1 = new[0]
+        post1 = new[0]
         picture1 = new[1]
-        chat_id = "@cs_go_pro_2000"
+        chat_id = "@CS_VNTU"
         if len(picture1) > 10:
             n = 10
         else:
