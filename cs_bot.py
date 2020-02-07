@@ -80,12 +80,6 @@ def array():
         for i in range(0, len(arr_post)):
             if post_f != arr_post[len(arr_post)-1]:
                 arr_post.append(post_f)
-                if arr_post[len(arr_post)-1].index(post_f):
-                    arr_post.pop(0)
-                    arr_post.append(post_f)
-                else:
-                    arr_post.pop(0)
-                    arr_post.append(post_f)
                 arr_post.pop(0)
                 send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
     except:
@@ -104,12 +98,6 @@ def array():
             for i in range(0, len(arr_post)):
                 if post_f != arr_post[len(arr_post)-1]:
                     arr_post.append(post_f)
-                    if arr_post[len(arr_post)-1].index(post_f):
-                        arr_post.pop(0)
-                        arr_post.append(post_f)
-                    else:
-                        arr_post.pop(0)
-                        arr_post.append(post_f)
                     arr_post.pop(0)
                     send(arr_picture[len(arr_picture) - 1],arr_post[len(arr_post) - 1])
         except:
