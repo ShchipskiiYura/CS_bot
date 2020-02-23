@@ -28,7 +28,7 @@ def feed():
     a = pages_data['feed']['data'] 
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    uri = '\n[Посилання на Facebook](https://www.facebook.com/groups/cs.vntu/permalink/' + post_id[1] + '/)'
 
     # посилання, лінк інколи глючить
     try:
@@ -115,7 +115,7 @@ def feed_1():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    uri = '\n[Посилання на Facebook](https://www.facebook.com/groups/cs.vntu/permalink/' + post_id[1] + '/)'
     
 
     # посилання, лінк інколи глючить
@@ -203,7 +203,7 @@ def mine():
     a = pages_data['feed']['data']
     id = a[0]['id']
     post_id = id.split('_')
-    uri = '\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    uri = '\n[Посилання на Facebook](https://www.facebook.com/groups/cs.vntu/permalink/' + post_id[1] + '/)'
 
     # посилання, лінк інколи глючить
     try:
@@ -290,7 +290,7 @@ def feed12():
     a = pages_data['feed']['data']
     id = a[1]['id']
     post_id = id.split('_')
-    uri = '\n[Посилання на Facebook](https://www.facebook.com/' + post_id[0] + '/posts/' + post_id[1] + ')'
+    uri = '\n[Посилання на Facebook](https://www.facebook.com/groups/cs.vntu/permalink/' + post_id[1] + '/)'
 
     # посилання, лінк інколи глючить
     try:
