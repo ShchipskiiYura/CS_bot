@@ -2,4 +2,4 @@ DateTime==4.3
 facebook-sdk==3.1.0
 keyboard==0.13.4
 pyTelegramBotAPI==3.6.6
-requests==2.22.0
+requests==2.31.0
